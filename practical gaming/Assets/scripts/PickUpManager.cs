@@ -5,7 +5,9 @@ using System;
 public class PickUpManager : MonoBehaviour {
     public Transform Player;
     public Transform flashlight;
-    public Transform Key;
+    public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
+    public bool gotKey1 = false, gotKey2 = false, gotKey3 =false, gotKey4 = false, gotKey5 = false, 
+                 gotKey6 = false, gotKey7 = false, gotKey8 = false, gotKey9= false, gotFinalKey = false;
 
 
     // Use this for initialization
@@ -15,7 +17,7 @@ public class PickUpManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if (Input.GetMouseButtonDown(0))
             checkForObject();
 
@@ -42,8 +44,9 @@ public class PickUpManager : MonoBehaviour {
 
         if (Physics.Raycast(mousePointer, out hitObject))
         {
+            Debug.DrawLine(Camera.main.transform.position, hitObject.point, Color.red);
             PickUpObject objectToPick = hitObject.collider.gameObject.GetComponent<PickUpObject>();
-
+            Debug.Log(objectToPick);
             if (objectToPick)
             {
 
@@ -52,12 +55,14 @@ public class PickUpManager : MonoBehaviour {
 
                     if (objectToPick.thisType == PickUpObject.PickUP.Health) { print("Health"); }
 
-                    if (objectToPick.thisType == PickUpObject.PickUP.Key)
+                    if (objectToPick.thisType == PickUpObject.PickUP.Key1)
                     {
                         print("Key");
                         GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<enemySpawn>().SendMessage("SpawnEnemy");
-                       // SendMessage("SpawnEnemy");
-                        //Destroy(Key);
+                        // SendMessage("SpawnEnemy");
+                        Destroy(Key1);
+                        gotKey1 = true;
+
                     }
 
                     if (objectToPick.thisType == PickUpObject.PickUP.FlashLight)
@@ -65,15 +70,19 @@ public class PickUpManager : MonoBehaviour {
                         print("Flashlight");
                         //flashlight.transform.parent = Player.transform;
                         Destroy(flashlight);
-                        
+
                     }
 
                     if (objectToPick.thisType == PickUpObject.PickUP.Paper) { print("Paper"); }
                 }
-            } 
+            }
 
         }
-
+    }
+        public void potatoe()
+            {
+       
+    }
 
         //if (Vector3.Distance(transform.position, Player.position) < 5)
         //{
@@ -84,4 +93,3 @@ public class PickUpManager : MonoBehaviour {
 
 
     }
-}
