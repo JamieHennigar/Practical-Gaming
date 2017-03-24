@@ -1587,6 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 504613516}
   thisType: 1
+  KeyNumber: 1
 --- !u!23 &172028023
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4548,26 +4549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 504613516}
   flashlight: {fileID: 0}
-  Key1: {fileID: 172028021}
-  Key2: {fileID: 0}
-  Key3: {fileID: 0}
-  Key4: {fileID: 0}
-  Key5: {fileID: 0}
-  key6: {fileID: 0}
-  key7: {fileID: 0}
-  key8: {fileID: 0}
-  key9: {fileID: 0}
-  finalKey: {fileID: 0}
-  gotKey1: 0
-  gotKey2: 0
-  gotKey3: 0
-  gotKey4: 0
-  gotKey5: 0
-  gotKey6: 0
-  gotKey7: 0
-  gotKey8: 0
-  gotKey9: 0
-  gotFinalKey: 0
+  Key: {fileID: 0}
+  gotKey: 0
 --- !u!114 &504613519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5111,20 +5094,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000010346633862, guid: 9f4e5dd2165039f4a878d1c1260761df,
     type: 2}
   m_PrefabInternal: {fileID: 1822703176}
---- !u!111 &566354892
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 566354889}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: e2456bdd57a5a6342a6cb359dc3cee7c, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &566354893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5137,6 +5106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisDoor: 0
+  doornumber: 1
 --- !u!65 &566354894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17050,11 +17020,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.73
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.24
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_LocalPosition.z
@@ -17082,11 +17052,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.8432266
+      value: 1.8903487
       objectReference: {fileID: 0}
     - target: {fileID: 4000013859883750, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2.8608832
+      value: 2.9028106
       objectReference: {fileID: 0}
     - target: {fileID: 23000011975334006, guid: 9f4e5dd2165039f4a878d1c1260761df,
         type: 2}
@@ -17105,6 +17075,15 @@ Prefab:
     - target: {fileID: 1000010346633862, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
       propertyPath: m_TagString
       value: LockedDoor1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012944575982, guid: 9f4e5dd2165039f4a878d1c1260761df,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010346633862, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}
+      propertyPath: m_Name
+      value: Door1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f4e5dd2165039f4a878d1c1260761df, type: 2}

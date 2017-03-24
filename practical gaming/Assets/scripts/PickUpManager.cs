@@ -5,14 +5,20 @@ using System;
 public class PickUpManager : MonoBehaviour {
     public Transform Player;
     public Transform flashlight;
-    public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
-    public bool gotKey1 = false, gotKey2 = false, gotKey3 =false, gotKey4 = false, gotKey5 = false, 
-                 gotKey6 = false, gotKey7 = false, gotKey8 = false, gotKey9= false, gotFinalKey = false;
+    public GameObject Key;
+    lockedDoorsManager doors;
+
+
+   // public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
+    /*public bool gotKey1 = false, gotKey2 = false, gotKey3 =false, gotKey4 = false, gotKey5 = false, 
+                 gotKey6 = false, gotKey7 = false, gotKey8 = false, gotKey9= false, gotFinalKey = false;*/
+    public bool gotKey = false;
+
 
 
     // Use this for initialization
     void Start () {
-	
+        doors = FindObjectOfType<lockedDoorsManager>();
 	}
 	
 	// Update is called once per frame
@@ -36,13 +42,13 @@ public class PickUpManager : MonoBehaviour {
 
     void checkForObject()
     {
-        print("Mouse Pressed");
-        Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
+       print("Mouse Pressed");
+       Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitObject;
 
 
-        if (Physics.Raycast(mousePointer, out hitObject))
+        if (Physics.Raycast( mousePointer, out hitObject))
         {
             Debug.DrawLine(Camera.main.transform.position, hitObject.point, Color.red);
             PickUpObject objectToPick = hitObject.collider.gameObject.GetComponent<PickUpObject>();
@@ -55,13 +61,14 @@ public class PickUpManager : MonoBehaviour {
 
                     if (objectToPick.thisType == PickUpObject.PickUP.Health) { print("Health"); }
 
-                    if (objectToPick.thisType == PickUpObject.PickUP.Key1)
+                    if (objectToPick.thisType == PickUpObject.PickUP.Key)
                     {
                         print("Key");
                         GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<enemySpawn>().SendMessage("SpawnEnemy");
                         // SendMessage("SpawnEnemy");
-                        Destroy(Key1);
-                        gotKey1 = true;
+                        doors.InformLockManagerFoundKey(objectToPick.KeyNumber);
+                        Destroy(objectToPick.gameObject);
+                        gotKey = true;
 
                     }
 
@@ -79,10 +86,11 @@ public class PickUpManager : MonoBehaviour {
 
         }
     }
-        public void potatoe()
-            {
-       
-    }
+    /*    public void whatMouseClicked()
+    {
+        print("Mouse Pressed");
+        Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
+    }*/
 
         //if (Vector3.Distance(transform.position, Player.position) < 5)
         //{
