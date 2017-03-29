@@ -7,7 +7,7 @@ public class PickUpManager : MonoBehaviour {
     public Transform flashlight;
     public GameObject Key;
     lockedDoorsManager doors;
-
+    flashLight1 theFlashLight;
 
    // public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
     /*public bool gotKey1 = false, gotKey2 = false, gotKey3 =false, gotKey4 = false, gotKey5 = false, 
@@ -19,6 +19,7 @@ public class PickUpManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         doors = FindObjectOfType<lockedDoorsManager>();
+        theFlashLight = FindObjectOfType<flashLight1>();
 	}
 	
 	// Update is called once per frame
@@ -80,7 +81,14 @@ public class PickUpManager : MonoBehaviour {
 
                     }
 
-                    if (objectToPick.thisType == PickUpObject.PickUP.Paper) { print("Paper"); }
+                    if (objectToPick.thisType == PickUpObject.PickUP.battery)
+                    {
+                        print("battery");
+                        theFlashLight .NewBattery();
+
+                        Destroy(objectToPick.gameObject);
+
+                    }
                 }
             }
 

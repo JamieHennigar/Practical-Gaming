@@ -7,7 +7,7 @@ public class PickUpObject : MonoBehaviour {
     
 
     //public enum PickUP { Health, Key1, key2, key3, key4, key5, key6, key7, key8, key9, finalKey, FlashLight, Paper, Damage}
-    public enum PickUP { Health, Key, FlashLight, Paper, Damage }
+    public enum PickUP { Health, Key, FlashLight, battery, Damage }
     public PickUP thisType;
     public int KeyNumber;  // Value set in inspector
 	// Use this for initialization

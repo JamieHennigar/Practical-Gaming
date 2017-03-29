@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,5 +72,15 @@ public class flashLight1 : MonoBehaviour {
             Debug.Log("Enabled");
         }
 
+    }
+
+    internal void addBatteryLife()
+    {
+        batteriesLife = maxBatteryLife;
+    }
+
+    internal void NewBattery()
+    {
+        batteriesLife = maxBatteryLife;
     }
 }
