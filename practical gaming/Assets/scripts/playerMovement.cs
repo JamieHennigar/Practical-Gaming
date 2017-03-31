@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class playerMovement : MonoBehaviour {
     public float moveSpeed = 5.0f;
     public float lookSpeed = 5.0f;
+    public float sprintSpeed = 10.0f;
+    public float gravity = 15.0f;
+    public float jump = 0.1f;
 
+    Vector3 velocity;
     public float rotationX;
     public float rotationY;
-    
+    private bool playerJumping = true;
+
     //public bool on = false;
-     
+
     // Use this for initialization
     void Start () {
         
@@ -21,32 +27,46 @@ public class playerMovement : MonoBehaviour {
 
         playerWalk();
         playerLook();
-        
-	
+        playerSprint();
+        playerJump();
+        playerCrouch();
+
+        if (playerJumping) velocity += gravity * Vector3.down * Time.deltaTime;
+        else
+            velocity = new Vector3(velocity.x, 0, velocity.y);
+        transform.position += velocity * Time.deltaTime;
 	}
+
+
 
     private void playerWalk()
     {
+        velocity = new Vector3(0, velocity.y, 0);
+
         if( Input.GetKey(KeyCode.W))
         {
+            velocity += transform.forward * moveSpeed;
           //  Camera.main.transform.Translate(new Vector3(0, 0, moveSpeed * Time.deltaTime));
-         transform.position  += transform.forward * moveSpeed * Time.deltaTime;
+          // transform.position  += transform.forward * moveSpeed * Time.deltaTime;
 
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+            velocity += -transform.forward * moveSpeed;
+           // transform.position -= transform.forward * moveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= transform.right * moveSpeed * Time.deltaTime;
+            velocity += -transform.right * moveSpeed;
+           // transform.position -= transform.right * moveSpeed * Time.deltaTime;
         }
 
         if(Input.GetKey(KeyCode.D))
         {
-          transform.position += transform.right * moveSpeed * Time.deltaTime;
+            velocity += transform.right * moveSpeed;
+          //transform.position += transform.right * moveSpeed * Time.deltaTime;
 
         }
     }
@@ -63,8 +83,51 @@ public class playerMovement : MonoBehaviour {
 
     }
 
-   
-   
+    private void playerSprint()
+    {
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            velocity += transform.forward * sprintSpeed;
+        }
+    }
+
+    private void playerJump()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            velocity += jump * Vector3.up;
+            playerJumping = true;
+        }
+
+      //  transform.position -= gravity * Time.deltaTime;
+    }
+
+    private void playerCrouch()
+    {
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.tag == "Floor")
+        {
+            if (playerJumping)
+            {
+                playerJumping = false;
+
+            }
+            
+
+        }
+    }
+
+
+
 
 
 }

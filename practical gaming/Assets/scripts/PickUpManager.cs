@@ -8,8 +8,9 @@ public class PickUpManager : MonoBehaviour {
     public GameObject Key;
     lockedDoorsManager doors;
     flashLight1 theFlashLight;
+    public Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-   // public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
+    // public GameObject Key1, Key2, Key3, Key4, Key5, key6, key7, key8, key9, finalKey;
     /*public bool gotKey1 = false, gotKey2 = false, gotKey3 =false, gotKey4 = false, gotKey5 = false, 
                  gotKey6 = false, gotKey7 = false, gotKey8 = false, gotKey9= false, gotFinalKey = false;*/
     public bool gotKey = false;
@@ -44,7 +45,7 @@ public class PickUpManager : MonoBehaviour {
     void checkForObject()
     {
        print("Mouse Pressed");
-       Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
+       
 
         RaycastHit hitObject;
 
