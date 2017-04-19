@@ -45,28 +45,28 @@ public class playerMovement : MonoBehaviour {
 
         if( Input.GetKey(KeyCode.W))
         {
-            velocity += transform.forward * moveSpeed;
+           // velocity += transform.forward * moveSpeed;
           //  Camera.main.transform.Translate(new Vector3(0, 0, moveSpeed * Time.deltaTime));
-          // transform.position  += transform.forward * moveSpeed * Time.deltaTime;
+           transform.position  += transform.forward * moveSpeed * Time.deltaTime;
 
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            velocity += -transform.forward * moveSpeed;
-           // transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+            //velocity += -transform.forward * moveSpeed;
+            transform.position -= transform.forward * moveSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            velocity += -transform.right * moveSpeed;
-           // transform.position -= transform.right * moveSpeed * Time.deltaTime;
+           // velocity -= transform.right * moveSpeed;
+            transform.position -= transform.right * moveSpeed * Time.deltaTime;
         }
 
         if(Input.GetKey(KeyCode.D))
         {
-            velocity += transform.right * moveSpeed;
-          //transform.position += transform.right * moveSpeed * Time.deltaTime;
+           // velocity += transform.right * moveSpeed;
+          transform.position += transform.right * moveSpeed * Time.deltaTime;
 
         }
     }

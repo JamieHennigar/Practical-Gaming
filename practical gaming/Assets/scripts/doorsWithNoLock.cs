@@ -32,22 +32,22 @@ public class doorsWithNoLock : MonoBehaviour {
 
     private void openDoors()
     {
-        Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
+      //  Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        RaycastHit hit;
+        //RaycastHit hit;
 
-        if (Physics.Raycast(mousePointer, out hit))
+       // if (Physics.Raycast(mousePointer, out hit))
         {
             if (Vector3.Distance(transform.position, door.transform.position) < 5)
             {
-                if (hit.collider.gameObject == this.gameObject)
-                {
+               // if (hit.collider.gameObject == this.gameObject)
+               // {
                     print("Open Sesame");
                     doorAnimator.SetBool("open", true);
 
 
                     doorOpen = true;
-                }
+               // }
             }
         }
         /*else if (Vector3.Distance(transform.position, door.transform.position) < 5 && (doorOpen = true))
