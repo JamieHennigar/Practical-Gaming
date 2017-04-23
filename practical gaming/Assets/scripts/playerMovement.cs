@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour {
     public float sprintSpeed = 10.0f;
     public float gravity = 15.0f;
     public float jump = 0.1f;
+   
 
     Vector3 velocity;
     public float rotationX;
@@ -125,6 +126,19 @@ public class playerMovement : MonoBehaviour {
 
         }
     }
+
+   /* private void theNoLockDoors()
+    {
+        Ray mousePointer = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(mousePointer, out hit))
+        {
+            if (hit.collider.gameObject == this.gameObject)
+            {
+                doorsWithNoLock.openDoors();
+            }
+        }
+    }*/
 
 
 

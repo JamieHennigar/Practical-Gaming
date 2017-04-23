@@ -11,8 +11,11 @@ public class MainMenu : MonoBehaviour {
      //Color OnMouseOverColor = Color.yellow;
     // Color OnMouseClickColor = Color.red;
    //  Color OnMouseExitColor = Color.white;
+
+        
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
    /* void Update()
