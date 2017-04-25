@@ -6,33 +6,33 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-    
-   // public Text theText;
-     //Color OnMouseOverColor = Color.yellow;
-    // Color OnMouseClickColor = Color.red;
-   //  Color OnMouseExitColor = Color.white;
 
+    // public Text theText;
+    //Color OnMouseOverColor = Color.yellow;
+    // Color OnMouseClickColor = Color.red;
+    //  Color OnMouseExitColor = Color.white;
+    bool mouseOver = false;
         
     // Use this for initialization
     void Start ()
     {
 		
 	}
-   /* void Update()
-    {
-        OnMouseEnter();
-        OnMouseExit();
-    }*/
+     void Update()
+     {
+         if(Input.GetKey(KeyCode.Mouse0) && mouseOver)
+         {
+             print("meh");
+             SceneManager.LoadScene("forest");
+         }
+     }
 
     void OnMouseEnter()
     {
-        print("cancer");
+        print("mouse");
         GetComponent<TextMesh>().color = Color.red;
-        if(Input.GetKey(KeyCode.Mouse0))
-        {
-            print("meh");
-            SceneManager.LoadScene("forest");
-        }
+        mouseOver = true;
+        
     }
     void OnMouseExit()
     {

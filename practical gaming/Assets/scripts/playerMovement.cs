@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour {
     public float sprintSpeed = 10.0f;
     public float gravity = 15.0f;
     public float jump = 0.1f;
-   
+    
 
     Vector3 velocity;
     public float rotationX;
@@ -49,7 +49,7 @@ public class playerMovement : MonoBehaviour {
            // velocity += transform.forward * moveSpeed;
           //  Camera.main.transform.Translate(new Vector3(0, 0, moveSpeed * Time.deltaTime));
            transform.position  += transform.forward * moveSpeed * Time.deltaTime;
-
+             
         }
 
         if (Input.GetKey(KeyCode.S))
