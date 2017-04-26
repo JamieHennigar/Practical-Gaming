@@ -11,9 +11,11 @@ public class enemyMovement : MonoBehaviour {
     enemyBehavior currentBehavior;
     enemyTransition currentTransition;
     public Transform player;
+    public Transform monster;
     public Transform[] destinations;
     private int destPoint = 0;
     private NavMeshAgent agent;
+
 
     // Use this for initialization
     void Start () {
@@ -57,9 +59,18 @@ public class enemyMovement : MonoBehaviour {
 
                 break;
             case enemyBehavior.attack:
-                transform.LookAt(player.position);
-                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-                transform.Translate(new Vector3(enemyWalkingSpeed * Time.deltaTime, 0, 0));
+                Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, fwd, out hit, 10))
+                {
+                    
+                    if (hit.collider.gameObject.name == "Player")
+                    Debug.Log("i see you");
+                    transform.LookAt(player.position);
+                    transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                    transform.Translate(new Vector3(enemyWalkingSpeed * Time.deltaTime, 0, 0));
+                }
                 break;
         }
         
@@ -67,15 +78,12 @@ public class enemyMovement : MonoBehaviour {
 
     void GotoNextPoint()
     {
-        // Returns if no points have been set up
-       //if (destinations.Length == 0)
-          //  return;
+       
 
-        // Set the agent to go to the currently selected destination.
+        
         agent.destination = destinations[destPoint].position;
 
-        // Choose the next point in the array as the destination,
-        // cycling to the start if necessary.
+       
         destPoint = (destPoint + 1) % destinations.Length;
         transform.Translate(new Vector3(enemyWalkingSpeed * Time.deltaTime, 0, 0));
     }
