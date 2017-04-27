@@ -34,7 +34,7 @@ public class playerMovement : MonoBehaviour {
 
         if (playerJumping) velocity += gravity * Vector3.down * Time.deltaTime;
         else
-            velocity = new Vector3(velocity.x, 0, velocity.y);
+            velocity = new Vector3(0, 0, 0);
         transform.position += velocity * Time.deltaTime;
 	}
 
@@ -42,7 +42,7 @@ public class playerMovement : MonoBehaviour {
 
     private void playerWalk()
     {
-        velocity = new Vector3(0, velocity.y, 0);
+      // velocity = new Vector3(0, velocity.y, 0);
 
         if( Input.GetKey(KeyCode.W))
         {
@@ -80,6 +80,7 @@ public class playerMovement : MonoBehaviour {
        
         transform.Rotate(Vector3.up, rotationX);
         Camera.main.transform.Rotate(Vector3.right, -rotationY);
+        //transform.Rotate(Vector3.right, -rotationY);
 
 
     }
