@@ -21,7 +21,12 @@ public class enemyMovement : MonoBehaviour {
     void Start () {
         currentBehavior = enemyBehavior.patrol;
         currentTransition = enemyTransition.nothing;
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.destination = destinations[0].position;
+
+
+
         //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 	
@@ -51,9 +56,11 @@ public class enemyMovement : MonoBehaviour {
                 break;
         }
 
-        switch(currentBehavior)
+        switch (currentBehavior)
         {
+            
             case enemyBehavior.patrol:
+     
                 if (agent.remainingDistance < 0.5f)
                     GotoNextPoint();
 
