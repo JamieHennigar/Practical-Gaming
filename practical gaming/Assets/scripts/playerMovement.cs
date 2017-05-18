@@ -89,7 +89,8 @@ public class playerMovement : MonoBehaviour {
     {
         if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
-            velocity += transform.forward * sprintSpeed;
+			transform.position  += transform.forward * sprintSpeed * Time.deltaTime;
+            //velocity += transform.forward * sprintSpeed;
         }
     }
 

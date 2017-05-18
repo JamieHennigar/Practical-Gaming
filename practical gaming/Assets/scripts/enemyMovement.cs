@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class enemyMovement : MonoBehaviour {
 
-    float enemyWalkingSpeed = 4.0f;
+    float enemyWalkingSpeed = 3.0f;
     enum enemyBehavior{ patrol, attack}
     enum enemyTransition { seePlayer, notSeePlayer, nothing}
     enemyBehavior currentBehavior;
@@ -15,7 +15,7 @@ public class enemyMovement : MonoBehaviour {
     public Transform[] destinations;
     private int destPoint = 0;
     private NavMeshAgent agent;
-
+	Animator enemyMove;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +24,7 @@ public class enemyMovement : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
 
         agent.destination = destinations[0].position;
-
+		enemyMove = GetComponent<Animator>();
 
 
         //player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -59,9 +59,10 @@ public class enemyMovement : MonoBehaviour {
         switch (currentBehavior)
         {
             
-            case enemyBehavior.patrol:
+		case enemyBehavior.patrol:
      
-                if (agent.remainingDistance < 0.5f)
+			if (agent.remainingDistance < 0.5f)
+				
                     GotoNextPoint();
 
                 break;
@@ -93,6 +94,8 @@ public class enemyMovement : MonoBehaviour {
        
         destPoint = (destPoint + 1) % destinations.Length;
         transform.Translate(new Vector3(enemyWalkingSpeed * Time.deltaTime, 0, 0));
+		//enemyMove.SetBool ("walk", true);
+		enemyMove.SetFloat("mixamo.com", enemyWalkingSpeed);
     }
 
 }
